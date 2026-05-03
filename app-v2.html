@@ -31,9 +31,9 @@
 
         html, body {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            background: white;
+            background: #eef2f7;
             color: var(--text-dark);
             overflow: hidden;
             -webkit-user-select: none;
@@ -43,36 +43,43 @@
 
         body {
             display: flex;
-            flex-direction: column;
-        }
-
-        .app-wrapper {
-            width: 375px;
-            height: 100%;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            border-radius: 40px;
-            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            background: #e8eff8;
         }
 
         .phone-frame {
-            width: 100%;
-            height: 100%;
+            width: 410px;
+            height: 860px;
+            background: #0f172a;
+            border-radius: 72px;
+            padding: 18px;
+            box-shadow: 0 42px 110px rgba(15, 23, 42, 0.24);
             display: flex;
-            flex-direction: column;
-            background: white;
+            justify-content: center;
+            align-items: center;
             position: relative;
         }
 
+        .app-wrapper {
+            width: 100%;
+            height: 100%;
+            background: white;
+            box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-radius: 52px;
+            overflow: hidden;
+        }
+
         .notch {
-            width: 150px;
-            height: 28px;
+            width: 180px;
+            height: 32px;
             background: #000;
-            border-radius: 0 0 20px 20px;
+            border-radius: 0 0 18px 18px;
             position: absolute;
             top: 0;
             left: 50%;
@@ -81,23 +88,28 @@
         }
 
         .screen-header {
-            padding-top: 16px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding-top: 28px;
+            background: linear-gradient(180deg, var(--primary) 0%, #1265da 100%);
             color: white;
-            padding: 20px;
+            padding: 26px 20px 26px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            border-bottom-left-radius: 36px;
+            border-bottom-right-radius: 36px;
         }
 
         .screen-header h1 {
-            font-size: 1.4em;
-            font-weight: 700;
-            margin-bottom: 4px;
+            font-size: 1.7em;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: 0.03em;
         }
 
         .screen-header p {
-            font-size: 0.8em;
-            opacity: 0.95;
+            font-size: 0.92em;
+            opacity: 0.88;
+            margin-top: 2px;
+            letter-spacing: 0.02em;
         }
 
         .screen {
@@ -105,7 +117,8 @@
             flex: 1;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            padding-bottom: 60px;
+            padding: 20px 18px 104px;
+            background: transparent;
         }
 
         .screen.active {
@@ -123,17 +136,21 @@
 
         /* === BOTTOM NAVIGATION === */
         .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 12px;
-            right: 12px;
-            width: 351px;
-            background: white;
-            border-top: 1px solid var(--gray);
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 36px);
+            max-width: 368px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 34px;
+            box-shadow: 0 20px 48px rgba(15, 23, 42, 0.18);
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            height: 60px;
-            z-index: 100;
+            height: 72px;
+            z-index: 120;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            backdrop-filter: blur(8px);
         }
 
         .nav-item {
@@ -143,15 +160,15 @@
             justify-content: center;
             cursor: pointer;
             color: var(--gray-dark);
-            font-size: 0.65em;
+            font-size: 0.72em;
             border: none;
             background: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             text-align: center;
-            padding: 6px 2px;
-            min-height: 60px;
-            border-radius: 8px;
-            margin: 2px;
+            padding: 0;
+            min-height: 72px;
+            border-radius: 22px;
+            margin: 0 4px;
         }
 
         .nav-item:active {
@@ -270,89 +287,104 @@
             flex: 1;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            padding: 16px;
+            padding: 20px 18px 16px;
         }
 
         .stats-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 14px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 18px;
         }
 
         .stat-box {
             background: white;
-            padding: 18px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            padding: 20px 16px;
+            border-radius: 24px;
+            text-align: left;
+            box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
             cursor: pointer;
-            border-top: 4px solid var(--primary);
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.12), transparent);
+            pointer-events: none;
         }
 
         .stat-box:active {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
         }
 
         .stat-label {
-            font-size: 0.8em;
+            font-size: 0.82em;
             color: var(--text-light);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.08em;
             margin-bottom: 10px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .stat-value {
-            font-size: 2em;
-            font-weight: 700;
+            font-size: 2.1em;
+            font-weight: 800;
             color: var(--primary);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
+            line-height: 1;
         }
 
         .stat-unit {
-            font-size: 0.8em;
+            font-size: 0.78em;
             color: var(--text-light);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .chart-box {
             background: white;
-            padding: 14px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 18px;
+            border-radius: 26px;
+            margin-bottom: 18px;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+            border: 1px solid rgba(15, 23, 42, 0.06);
         }
 
         .chart-title {
-            font-size: 0.9em;
-            font-weight: 600;
+            font-size: 0.95em;
+            font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
 
         .chart-simple {
-            height: 100px;
-            background: linear-gradient(180deg, rgba(0, 82, 204, 0.1) 0%, transparent 100%);
-            border-radius: 8px;
+            min-height: 160px;
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.02) 100%);
+            border-radius: 20px;
             display: flex;
             align-items: flex-end;
             justify-content: space-around;
-            padding: 10px;
+            padding: 18px;
         }
 
         .chart-bar {
-            width: 8px;
+            width: 12px;
             background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            border-radius: 999px;
+            transition: all 0.25s ease;
         }
 
         .chart-bar:hover {
-            width: 12px;
-            opacity: 0.8;
+            width: 16px;
+            opacity: 0.95;
         }
 
         /* === SECTION TITLE === */
@@ -735,10 +767,11 @@
     </style>
 </head>
 <body>
-    <div class="app-wrapper">
-        <div class="notch"></div>
-        
-        <!-- ===== SCREEN 1: LOGIN ===== -->
+    <div class="phone-frame">
+        <div class="app-wrapper">
+            <div class="notch"></div>
+            
+            <!-- ===== SCREEN 1: LOGIN ===== -->
         <div class="screen active" id="loginScreen">
             <div class="screen-header">
                 <h1>TIÊN SƠN</h1>
@@ -767,8 +800,8 @@
         <!-- ===== SCREEN 2: DASHBOARD ===== -->
         <div class="screen" id="dashboardScreen">
             <div class="screen-header">
-                <h1>TRANG CHỦ</h1>
-                <p>Hôm nay - 28/04/2026</p>
+                <h1>TỔNG QUAN</h1>
+                <p>Phòng Cân Xi Măng</p>
             </div>
             <div class="dashboard-content">
                 <div class="stats-row">
@@ -1323,6 +1356,7 @@
             </button>
         </div>
     </div>
+</div>
 
     <script>
         function switchScreen(screenId, navIndex) {
