@@ -1,0 +1,44 @@
+name: Build iOS IPA (skeleton)
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install dependencies
+        working-directory: zeni_app
+        run: |
+          flutter pub get
+
+      - name: Prepare provisioning and certificates
+        run: |
+          echo "This workflow requires Apple credentials and provisioning profiles."
+          echo "Set secrets: APP_STORE_CONNECT_API_KEY, CERT_P12_BASE64, P12_PASSWORD, TEAM_ID, BUNDLE_ID"
+
+      - name: Build IPA
+        working-directory: zeni_app
+        run: |
+          # This step requires code signing credentials. Configure secrets and
+          # update export options as needed.
+          flutter build ipa --export-method app-store || true
+
+      - name: Upload IPA artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zeni_app-ipa
+          path: |
+            zeni_app/build/ios/ipa/*.ipa
