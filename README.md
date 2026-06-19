@@ -1,5 +1,5 @@
 # Zeni-app-
-Zeni – Đơn giản hóa cuộc sống số của bạn
+Ứng dụng bán hàng thông minh – Tăng tốc doanh số, tối ưu vận hành.
 
 ## Mục tiêu
 Ứng dụng Flutter quản lý cân xe, lệnh giao hàng và trợ lý AI cho vận hành xi măng Tiên Sơn.
