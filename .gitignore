@@ -1,0 +1,6 @@
+flutter/
+.DS_Store
+.idea/
+.vscode/
+desktop-app/dist/
+desktop-app/node_modules/
